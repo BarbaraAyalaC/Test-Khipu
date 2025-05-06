@@ -4,10 +4,10 @@ import logging
 
 # Configuración
 KHIPU_API_URL = 'https://khipu.com/api/2.0/payments'
-RECEIVER_ID = 'TU_RECEIVER_ID'  # Reemplaza con tu receiver_id real
-SECRET = 'TU_LLAVE_SECRETA'     # Reemplaza con tu secret
+RECEIVER_ID = 'TU_RECEIVER_ID'  # Reemplaza con el número ID que da Khipu
+SECRET = 'TU_SECRET'            # Reemplaza con tu clave secreta de la app
 
-# Opcional: configuración de logging
+# Opcional
 logging.basicConfig(level=logging.INFO)
 
 
@@ -21,7 +21,7 @@ def crear_pago_khipu(
     notify_url
 ):
     """
-    Crea un pago en Khipu usando el entorno de pruebas.
+    Crea un pago en Khipu usando el entorno de pruebas
     """
     payload = {
         'receiver_id': RECEIVER_ID,
@@ -57,7 +57,7 @@ def crear_pago_khipu(
 # Ejemplo de uso
 if __name__ == '__main__':
     enlace_pago = crear_pago_khipu(
-        monto=1500,
+        monto=5000,
         descripcion='Prueba integración Khipu - DemoBank',
         id_transaccion='pedido-123',
         email_cliente='cliente@correo.cl',
@@ -67,7 +67,8 @@ if __name__ == '__main__':
     )
 
     if enlace_pago:
-        print("✅ Enlace de pago generado:")
+        print("Enlace de pago generado:")
         print(enlace_pago)
     else:
-        print("❌ No se pudo generar el pago.")
+        print("No se pudo generar el pago.")
+
